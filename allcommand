@@ -1,0 +1,332 @@
+    
+                     Md Rashedul Islam Rony 
+              Pabna University Of Science & Technology
+                    Course Code: CSE-3204
+                    Course Title: Operating Systems Sessional
+                    
+ 
+cat /etc/shells       //types of shells
+
+which bash            // bash location
+
+touch hello.sh        // file create
+
+ls -al                // show files description
+
+chmod +x hello.sh     // change the execute permission
+
+chmod -w hello.sh     // remove the write permission
+
+#this is a comment    // comment
+
+$BASH                 // return bash name
+
+$BASH_VERSION         // return bash version 
+
+$HOME                 // return HOME
+
+$PWD                  // return present working directory
+
+read                  // use to take input
+
+-p                    // use to take input in the same line
+
+-sp                   // hide password
+
+-a                    // read an array
+
+$REPLY                // print all array values
+
+args=("$@")           // all arguments 
+
+echo $@               // print all arguments
+
+`expr length $str`    // calculate the length of a string
+
+-eq -ne -gt -ge -lt -le
+
+if [[ $word < "b" ]]  // in string comparision you need to use double square bracket
+
+-e                    // file exist or not
+
+-f                    // file exist and is it regular or not 
+
+-d                    // directory exist or not
+
+mkdir directory_name  // directory making command
+
+-b                    // blog special file
+
+-c                    // character special file
+
+-s                    // file is empty or not
+
+cat > $file_name        // write something into file
+
+cat >> $file_name        // text will be appended 
+
+cat test               // to see the data inside file
+
+-r                    // to check read permission or not 
+
+-w                    // to check write permission or not 
+
+-x                    // // to check execute permission or not 
+
+if [ $age -gt 18 ] && [ $age -lt 30 ] // logical AND operator
+
+num=$(( num+1 ))       // increment by one
+
+sleep 1                // print value after one second
+
+gnome-terminal &       // opens gnome terminal 
+
+xterm                  //opens xterm terminal 
+
+readonly var_name      // readonly variables value is not possible to change 
+
+readonly -f hello       // used to make a function readonly 
+
+readonly -p             // return readonly variables
+
+readonly -f             // return readonly functions
+
+echo "pid is $$"        // print the pid number
+
+kill -9 pid_number      // killed
+
+#----------Arithmetic operations for integer value-----------#
+
+echo $(( $num1 + $num2 ))
+echo $(( $num1 - $num2 ))
+echo $(( $num1 * $num2 ))
+echo $(( $num1 / $num2 ))
+echo $(( $num1 % $num2 ))
+
+echo $(expr $num1 + $num2 )
+echo $(expr $num1 - $num2 )
+echo $(expr $num1 \* $num2 )
+echo $(expr $num1 / $num2 )
+echo $(expr $num1 % $num2 )
+
+#----------Arithmetic operations for floating value-----------#
+
+echo $num1 + $num2 | bc
+echo $num1 - $num2 | bc
+echo $num1 \* $num2 | bc
+echo "scale=2;$num1 / $num2" | bc
+echo $num1 % $num2 | bc
+
+echo "scale=2;sqrt($num1)" | bc -l  // square root of a number
+echo $num^$num | bc -l              // power
+
+#----------if statement-----------#
+
+if [ condition ]
+then
+  statement
+elif [ condition ]
+  statement
+else 
+  statement 
+fi 
+
+#----------case statement-----------#
+
+
+case expression in
+     pattern )
+        statements ;;
+     pattern )
+        statements ;;
+     ...
+
+esac
+
+#----------example-----------#
+#! /bin/bash
+
+vehicle=$1
+
+case $vehicle in
+    "car" )
+     echo "Rent of $vehicle is 100$" ;;
+     "van" )
+     echo "Rent of $vehicle is 80$" ;;
+     "bicycle" )
+     echo "Rent of $vehicle is 5$" ;;
+     "truck" )
+     echo "Rent of $vehicle is 150$" ;;
+     * )
+     echo "Unknown $vehicle" ;;
+esac
+
+
+#------------Check if string contains numbers------------#
+if [[ $VAR =~ [0-9] ]]
+
+#------------Check if string contains only numbers------------#
+if [[ $VAR =~ ^[0-9]+$ ]]
+
+#------------ Check if string contains only alphabets and numbers------------#
+if [[ $VAR =~ ^[[:alnum:]]+$ ]]
+
+#------------ Check if string starts with character------------#
+if [[ $VAR =~ ^[A] ]]
+
+
+#------------ Check if string contains special characters------------#
+ if [[ ! $VAR =~ ^[[:alnum:]]+$ ]]
+
+ #------------ Check if string contains vowels------------#
+if [[ $VAR =~ [AEIOUaeiou] ]]
+
+#------------ Check if string contains letters------------#
+if[[ $username =~ [abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ] ]]
+
+os=('ubuntu' 'windows' 'kali')  //array declaration
+echo ${os[@]}                   //print all array elements
+${os[0]}           // access array element
+echo ${!os[@]}     // print all index
+echo ${#os[@]}     // return size/length of array
+unset os[2]
+
+#----------while loop-----------#
+
+while [ condition ]
+do
+  statement
+done
+
+#----------example-----------#
+
+while read p
+do
+  echo $p
+done < hello.sh(file_name)
+
+or
+
+while IFS= read -r p
+do
+  echo $p
+done < hello.sh
+
+#----------until loop-----------#
+until [ condition ]
+do
+  command1
+  command2
+  command3
+  ........
+done
+
+#----------example-----------#
+
+count=1
+
+until [ $count -gt 10 ]
+do
+  echo $count
+  count=$(( count+1 ))
+done
+
+#----------For loop-----------#
+
+for var in 1 2 3 ..... n
+do
+  command
+  .......
+done 
+or
+for var in file1 file2 file3
+do
+  command
+  .......
+done 
+or
+for (( initialize; condition; increment/decrement))
+do
+  command
+  ......
+done
+#----------example-----------#
+for var in 1 2 3 4
+do
+ echo $var
+done
+
+another example:
+
+for var in {1..10}
+do
+ echo $var
+done
+
+another example:
+for var in {1..10..2}       // increment by 2
+do
+ echo $var
+done
+
+another example:
+
+for command in ls pwd date
+do
+  echo "---------$command-----------"
+  $command
+done
+
+another example:
+
+for item in *         // print all files
+do
+  echo $item
+done
+
+#----------select loop-----------#
+select var in list
+do
+  command
+  .......
+done 
+#----------example-----------#
+select item in rony rashedul rakib rakibul rokon
+do
+  case $item in 
+    rony )
+       echo rony is selected ;;
+    rashedul )
+       echo rashedul is selected ;;
+    rakib )
+       echo rakib is selected ;;
+    rakibul )
+       echo rakibul is selected ;;
+    rokon )
+       echo rokon is selected ;;
+    * )
+       echo "unknown"
+  esac
+done
+
+#----------function-----------#
+
+function name() {
+  command
+}
+or
+name() {
+  command
+}
+
+#----------example-----------#
+#with parameter
+
+function print() {
+  echo $name
+}
+
+read name
+print name
+
+
