@@ -54,3 +54,14 @@ start()
 
 MediaPlayer 
 অডিও এবং ভিডিও ফাইল এর প্লেব্যাক কন্ট্রোল করার জন্য  ব্যবহৃত হয়।  
+AudioManager:
+ভলিউম আকছেস(বাড়ানো , কমানো ইত্যাদি )  এবং রিংজার মোড কন্ট্রোল এর সুবিধা দিয়ে থাকে। 
+audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+audioManager,AudioManager ক্লাস এর অবজেক্ট ।  getSystemService(Context.AUDIO_SERVICE) এই ফাংশনের মাধ্যমে সিস্টেমের অডিও সার্ভিস গুলো পাওয়া যায় । যেমন ভলিউম , রিংজার মোড , রাউটিং ইত্যাদি । 
+int maxVolume = audioManager.getStreamMaxVolume(audioManager.STREAM_MUSIC)
+getStreamMaxVolume() ফাংশনটি সিস্টেমের ম্যাক্সিমাম ভলিউম রিটার্ন করে । 
+ঠিক একইরকম getStreamMinVolume() ফাংশনের মাধ্যমে সিস্টেমের মিনিমাম ভলিউম পাওয়া যায় । 
+int curVolume = audioManager.getStreamVolume(audioManager.STREAM_MUSIC);
+getStreamVolume() ফাংশনটি সিস্টেমের কারেন্ট ভলিউম রিটার্ন করে । 
+
+
