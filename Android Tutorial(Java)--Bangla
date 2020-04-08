@@ -111,3 +111,310 @@ onStartTrackingTouch (SeekBar seekBar)
 
 onStopTrackingTouch (SeekBar seekBar)
 এই ফাংশন ইউজার এর টাচ শেষ হয়েছে কিনা সেটা ট্রাক করে । যদি টাচ শেষ হয় তাহলে জানায় । এছাড়াও ক্লায়েন্ট ইচ্ছে করলে এই ফাংশনের মাধ্যমে সিকবারের সামনে অগ্রসর হওয়া পুনরায় চালু করে দিতে পারে।
+
+
+
+
+<Button
+        android:onClick="buttonTapped"
+        android:id="@+id/textId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"/>
+view.getId():
+এই ফাংশনের মাধ্যমে উপরোক্ত বাটনের আইডি পাওয়া যাবে । 
+
+view.getResources().getResourceEntryName(view.getId())
+এই ফাংশনের মাধ্যমে বাটনের আইডি টেক্সট পাওয়া যাবে । অর্থাৎ উপরোক্ত বাটনের ক্ষেত্রে textId পাবো । 
+
+getActivity().getPackageName()
+এই ফাংশনের মাধ্যমে প্যাকেজ নেম( স্ট্রিং ভালু ) পাওয়া যায় । 
+
+GridLayout:
+এটা মেইনলি লেয়াউট ভিউ টাকে নিদিষ্ট সংখ্যক রো এবং কলামে বিভক্ত করে । নিদিষ্ট বলতেছি এই কারনে প্রোগ্রামাররা GridLayout নিয়ে কাজ করার সময় কলাম এবং রো এর সংখ্যা নিদিষ্ট করে দেন । 
+
+ListView:
+লিস্টভিউ এমন একটা ভিউ যেটা বিভিন্ন আইটেম কে গ্রুপ করে এবং ভারটিকাল স্ক্রলএবল লিস্টে আইটেম গুলোকে দেখায় । Adapter এর মাধ্যমে লিস্ট আইটেম গুলো অটোমেটিকালি লিস্টে ইনসার্ট হয় ।
+Adapter এর কাজ হল কনটেন্ট সোর্স থেকে কনটেন্ট নিয়ে আসা অথবা ইউ আই কম্পোনেন্ট এবং কনটেন্ট সোর্স এর মধ্যে ব্রিজ হিসেবে কাজ করে , কনটেন্ট সোর্স হতে পারে ডাটাবেস / অ্যারে। অ্যান্ড্রয়েড অ্যাডাপটার এর বিভিন্ন সাবক্লাস প্রভাইড করে থাকে যেগুলা বিভিন্ন ধরনের ডেটা রিট্রাইভ করার
+কাজে বাবহিত হয় । কিছু কমন অ্যাডাপটার হল ArrayAdapater, BaseAdapter, CursorAdapter, SimpleCursorAdapter, SpinnerAdapter and WrapperListAdapter ইত্যাদি ।  
+
+Main Thread:
+অ্যান্ড্রয়েড সকল ইউ আই অপারেশন এবং ইনপুট ইভেন্ট সম্পাদন করে একটিমাত্র থ্রেড এর মাধ্যমে , যেটি মেইন থ্রেড / ইউ আই থ্রেড নামে পরিচিত । অ্যান্ড্রয়েড সকল ইভেন্ট কালেক্ট করে মেইন থ্রেড এর একটা কিউ এর মধ্যে রেখে দেয় এবং লুপার ক্লাসের অবজেক্ট এই কিউ এর সকল 
+ইভেন্ট প্রসেস করে ।অ্যান্ড্রয়েড মুলত অ্যাসিনক্রোনাস পদ্ধিতেতে কাজ করার জন্য থ্রেড সাপোর্ট করে ।   
+
+Handler:
+মেইন থ্রেড বাদেও অন্য কোন থ্রেড এর মাধ্যমে যদি আমরা ইউ আই আপডেট করতে চাই , তাহলে সেই থ্রেড কে মেইন থ্রেড এর সাথে সিনক্রোনাস  করে নিতে হয় । এই সীমাবদ্ধতা এবং কমপ্লেক্সিটির কারনে, যেন একই সাথে কাজ করা যায় এজন্য জাভা কিছু অতিরিক্ত ক্লাস প্রভাইড করে যেমন 
+Handler,AsyncTask ইত্যাদি । 
+
+AsyncTask:
+ব্যাকগ্রাউন্ড থ্রেড এর মধ্যে বিভিন্ন ধরনের কাজ করা এবং মেইন থ্রেডকে আপডেট ( অর্থাৎ ব্যাকগ্রাউন্ড এবং মেইন থ্রেড এর মধ্যে কমিউনিকেট করা  ) করার জন্য  এই আবস্ট্রাক্ট ক্লাসটি বাবহিত হয় ।
+onPreExecute():
+ব্যাকগ্রাউন্ডে কোন অপারেশন করার পূর্বে ইউজার কে ইস্ক্রিনে কোন কিছু ( যেমন প্রোগ্রেসবার অথবা যেকোনো অ্যানিমেশন  ) দেখানোর জন্য এই ফাংশন ব্যাবহার করা হয় । 
+doInBackground(Params):
+ব্যাকগ্রাউন্ড থ্রেড এর মধ্যে অপারেশন করার জন্য এই ফাংশন ব্যাবহার করা হয় । 
+onProgressUpdate(Progress..):
+ব্যাকগ্রাউন্ড থ্রেড এর মধ্যে কাজ করা অবস্থায় যদি ইউ আই এর মধ্যে কোনও ইনফরমেশন এর পরিবর্তন করার জন্য এই ফাংশন ব্যাবহার করা হয় । 
+onPostExecute(Result):
+এই ফাংশন মেইনলি ব্যাকগ্রাউন্ড এর কাজ শেষ করার পর ইউ আই আপডেট করে । 
+
+JSON কি? 
+JSON এর পূর্ণরূপ হচ্ছে JavaScript Object Notation.JSON এমন ধরনের সিনট্যাক্স যেটা মেইনলি ডাটা স্টোর( কোন ফর্মেটে ডাটা জমা করবে  ) এবং এক্সচেঞ্জ ( ব্রাউজার এবং সার্ভার এর মধ্যে টেক্সট এক্সচেঞ্জিং) এর কাজ করে ।
+JSON হচ্ছে লাইটওয়েট ডাটা ইন্টারচেঞ্জ ফরমেট । সহজে বুঝতে পারা যায় এবং ল্যাঙ্গুয়েজ ইনডিপেন্ডেন্ট । 
+কেন JSON ব্যাবহার করবো ? 
+JSON শুধু টেক্সট হওয়ায় সার্ভারে পাঠানো অথবা সার্ভার থেকে নিয়ে যেকোনো ল্যাঙ্গুয়েজ ডাটা ফর্মেট হিসেবে ব্যাবহার করা যায় । এজন্য সার্ভার থেকে JSON ফরমেটে  প্রাপ্ত ডাটা জাভাস্ক্রিপ্ট ল্যাঙ্গুয়েজ এর মতো অন্যান্য ল্যাঙ্গুয়েজেও ব্যাবহার করা যায় ।  
+এক্সচেঞ্জিং ডাটাঃ
+ব্রাউজার এবং সার্ভার এর মধ্যে টেক্সট হিসেবে ডাটা এক্সচেঞ্জ হয় ।  যেকোনো জাভাস্ক্রিপ্ট অবজেক্ট কে JSON এ পরিবর্তন করা এবং প্রাপ্ত JSON কে সার্ভারে পাঠানো যায় । বিপরীত ঘটনাও সত্য অর্থাৎ সার্ভার থেকে প্রাপ্ত যেকোনো JSON কে জাভাস্ক্রিপ্ট অবজেক্টে পরিবর্তন করা যায় ।
+এভাবেই পারসিং এবং ট্রান্সলেশন ছাড়াই ডাটা কে জাভাস্ক্রিপ্ট অবজেক্ট হিসেবে ব্যাবহার করা যায় । 
+সেন্ডিং ডাটাঃ
+যদি জাভাস্ক্রিপ অবজেক্ট হিসেবে ডাটা স্টোর করা থাকে তাহলে সেটাকে JSON এ পরিবর্তন করে সার্ভারে পাঠানো যায় । 
+রিসিভিং ডাটাঃ
+যদি তুমি JSON ফর্মেটে ডাটা রিসিভ করো তাহলে সেটাকে জাভাস্ক্রিপ্ট অবজেক্টে কনভার্ট করতে পারো । 
+স্টোরিং ডাটাঃ 
+ডাটা একটি নিদিষ্ট ফর্মেটে মেমোরিতে স্টোর করা হয় যেমন টেক্সট অথবা অন্য যেকোনো ফর্মেট । JSON এর মাধ্যমে জাভাস্ক্রিপ্ট অবজেক্ট কে টেক্সট হিসেবে স্টোর করা যায় ।  
+
+Google Map:
+অ্যান্ড্রয়েড অ্যাপের মধ্যে গুগল ম্যাপ সংযোজন করার সুবিধা দিয়ে থাকে । ম্যাপের  মধ্যে যেকোনো অবস্থান দেখানো অথবা বিভিন্ন রাউট দেখানো সম্ভব , এছাড়াও প্রোগ্রামাররা গুগল ম্যাপ নিজেদের মতো করে কাস্টোমাইজ করতে পারে ।
+ধাপ ১- অ্যাপের মধ্যে গুগল ম্যাপ সংযোজন এর জন্য ম্যাপ ফ্রাগমেন্ট এক্সএমএল ফাইল এর মধ্যে অ্যাড করতে হবে । এর সিনট্যাক্স হল -
+<fragment
+  android:id="@+id/map"
+  android:name="com.google.android.gms.maps.MapFragment"
+  android:layout_width="match_parent"
+  android:layout_hight="match_parent"
+/>
+ধাপ ২- AndroidManifest file এর মধ্যে কিছু পারমিশন এবং গুগল ম্যাপ এপিআই কি দিতে হবে । এর সিনট্যাক্স হল - 
+<!--Permissions-->
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<!--Google MAP API key-->
+<meta-data
+ android:name="com.google.android.maps.v2.API_KEY"
+ android:value="your api key"/>
+
+Customizing Google Map:
+1.Adding Marker:
+  গুগল ম্যাপে কোন অবস্থান দেখানোর জন্য মার্কার এবং মার্কার এর সাথে টেক্সট দেখানোর জন্য addMarker() মেথড ব্যাবহার করা হয় । 
+ উদাহরণঃ
+ final LatLng sonaray = new LatLng(21,57);// আমি যে অবস্থান দেখাতে চাচ্ছি সেই অবস্থানের ল্যাটিচুড এবং লংগিচুড প্যারামিটার হিসেবে পাঠিয়ে LatLng এর অবজেক্ট ক্রিয়েট করছি ।  
+ Marker so = googleMap.addMarker(new MarkerOptions().position(sonaray).title("Sonaray"));
+2.Changing Map type:
+ চার প্রকার(normal, hybrid, satellite,terrain) ম্যাপ আছে , অ্যাপের মধ্যে প্রোগ্রামাররা নিজেদের ইচ্ছামত / ব্যাবহার কারী দের কথা চিন্তা করে যেকোনো ম্যাপ অ্যাড করতে পারে । 
+ googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+ googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+ googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+ googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+3.Enable/Disable zoom
+  setZoomControlsEnabled(boolean) এই ফাংশনের মাধ্যমে ম্যাপের জুম অপশন এনাবল( বুলিয়ান ভালু trueহবে  )/ডিসেবল(বুলিয়ান ভালু falseহবে ) করতে পারি ।    
+4.এছাড়াও গুগল ম্যাপ কাস্টমাইজেশন করার জন্য GoogleMap ক্লাস কিছু ফাংশন প্রভাইড করে থাকে । যেমন  addCircle(),addPolygon(),addTileOverlay(),animateCamera() ইত্যাদি ।  
+
+অ্যাপের মধ্যে লোকেশন আপডেট পেতে হলে কিছু ধাপ অনুসরন করতে হয় ।
+ধাপ ১- অ্যাড্রয়েড মেনিফেস্ট ফাইলে পারমিশন দেয়া 
+    পারমিশন না দিলে রানটাইমে SecurityException এরর দিবে । 
+  LocationManager এর বাবহিত মেথড এর উপর ভিত্তি করে হয় ACCESS_COARSE_LOCATION অথবা ACCESS_FINE_LOCATION ব্যাবহার করবো । 
+  অ্যাপ নেটওয়ার্ক বেসড লোকেশন প্রভাইডার ব্যাবহার করলে মেনিফেস্ট ফাইল এর মধ্যে  ACCESS_COARSE_LOCATION পারমিশন দিতে হবে । অধিকতর সঠিক অবস্থান পেতে  ACCESS_FINE_LOCATION পারমিশন দিতে হবে। 
+ ACCESS_FINE_LOCATION পারমিশন দেয়া মানে একই সাথে ACCESS_COARSE_LOCATIONপারমিশন দেয়া । কিন্তু বিপরীত ঘটনা সত্য নয় । 
+ধাপ ২-LocationManager এর রেফারেন্স পাওয়া / দেওয়া 
+   LocationManager এর রেফারেন্স পেতে হলে getSystemService() মেথড কল করতে হবে । এর সিনট্যাক্স  হল - 
+   LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+ধাপ ৩- লোকেশন প্রভাইডার পিক করা 
+    লোকেশন প্রভাইডার হতে পারে GPS অথবা নেটওয়ার্ক বেসড । GPS অন্যান্য লোকেশন প্রভাইডার এর থেকে বেশি সময় নিলেও অধিকতর অ্যাকুরেট ফলাফল দেয় । 
+  সিনট্যাক্স -
+ LocationProvider provider = locationManager.getProvider(LocationManager.GPS_PROVIDER);
+ধাপ ৪- লোকেশন প্রভাইডার এনাবল কিনা ভেরিফাই করা
+  অনেক সময় সেটিং অফশনে লোকেশন প্রভাইডার অপশন ডিসেবল করা থাকে । এজন্য ভেরিফাই করার প্রয়োজন পড়ে । 
+ বিঃ দ্রঃ  চেক করাটা ভালো প্র্যাকটিস ।   
+ isProviderEnabled() ফাংশনের মাধ্যমে চেক করার কাজ করা যায় যে লোকেশন প্রভাইডার এনাবল আছে কিনা । যদি না থাকে তাহলে এনাবল করার সিনট্যাক্স হল - 
+  Intent settingIntent = new Intent(Setting.ACTION_LOCATION_SOURCE_SETTINGS);
+  startActivity(settingIntent);
+ এই কোডের মাধ্যমে একটা অ্যালার্ট ডায়ালগ বক্স আসবে যার মাধ্যমে ইউজার পারমিশন দিতে পারবে । 
+LocationListener:
+যখন ইউজার/ডিভাইস এর লোকেশন পরিবর্তন হয় LocationManager এর কাছ থেকে নোটিফিকেশন গ্রহন করাই LocationListener এর কাজ । 
+onLocationChanged(Location location) - লোকেশন পরিবর্তন হলে এই ফাংশন কল হয় । 
+onProviderDisabled(String provider) - ইউজার এর দ্বারা প্রভাইডার ডিসেবল করা হলে এই ফাংশন কল হয় । 
+onProviderEnabled(String provider) - ইউজার প্রভাইডার এনাবল করলে এই ফাংশন কল হয় । 
+Geocoder:
+Android API Geocoder ক্লাস প্রভাইড করে যেটা লোকেশন নেম অথবা লোকেশন ল্যাটিচুট/লংগিচুড ব্যাবহার করে ঐ স্থানের বিস্তারিত( কান্ট্রি নেম, কান্ট্রি কোড, পোস্টাল কোড এবং আরও .... ) পাওয়া যায় । 
+
+SharedPreferences:
+অ্যান্ড্রয়েড আপ্লিকেশনের মধ্যে বিভিন্ন ভাবে ডাটা স্টোর করা যায় । SharedPreferences হল ডাটা স্টোর করার একটা ওয়ে ।
+এজন্য  SharedPreferences এর অবজেক্ট ক্রিয়েট করতে হয় । সিনট্যাক্স -
+SharedPreferences sharedPreferences = getSharedPreferences(package name, Context.MODE_PRIVATE)
+Context.MODE_PRIVATE প্যারামিটার হিসেবে এই মোড সেন্ড করলে শুধুমাত্র অ্যাপলিকেশন কল করেই ফাইল অ্যাকসেস করা সম্ভব। এছাড়াও MODE_APPEND,MODE_MULTI_PROCESS অ্যান্ড্রয়েড প্রভাইড করে থাকে । 
+ডাটা স্টোর করার জন্য নিচের ধাপগুলো অনুসরন করতে হবে । 
+প্রথমেই  sharedPreferences.Editor ক্লাস এর একটা অবজেক্ট কিয়েট করতে হবে । সিনট্যাক্স 
+Editor editor = sharedPreferences.edit();
+sharedPreferences.Editor অবজেক্ট এর মাধ্যমে putString(key, value) ফাংশন কল করে ডাটা স্টোর করা যায় । সিনট্যাক্স
+editor.putString("key", "value").apply()।
+উপরের স্টেটমেন্টগুলো কে নিচের মত একসাথেও লিখা যায় ।  
+sharedPreferences.edit().putString(key,value).apply();
+      
+Menu:
+1.Create a menu xml file
+রিসোর্স ফোল্ডার এর আন্ডারে একটা ফোল্ডার(যেমন মেনু)  বানাতে হবে এবং সেই ফোল্ডার (মেনু) ফোল্ডার এর অধীনে একটা ফাইল ক্রিয়েট করতে হবে । 
+
+
+SQLiteDatabase:
+এটি একটি ওপেন সোর্স এসকিউএল ডাটাবেস, এর মাধ্যমে কোন অ্যান্ড্রয়েড ডিভাইসে টেক্সট ফাইলের মধ্যে ডাটা জমা রাখা যায় । 
+ রিলেশনাল ডাটাবেসের সকল ফিচার সাপোর্ট করে । ডাটাবেস অ্যাকসেস করার জন্য JDBC,ODBC এগুলার কানেকশন প্রয়োজন পড়ে না ।
+android.database.sqlite এই প্যাকেজটি প্রয়োজনীয় ক্লাস প্রভাইড করে থাকে ডাটাবেস ম্যানেজ করার জন্য । 
+Database Creation:
+SQLiteDatabase sqliteDatabase = openOrCreateDatabase("Database name", MODE_PRIVATE, null);
+এই স্টেটমেন্টের মাধ্যমে মেইনলি এসকিউলাইট ডাটাবেসের একটা অবজেক্ট কিয়েট করে অর্থাৎ   openOrCreateDatabase() ফাংশনটি অবজেক্ট রিটার্ন করে । 
+openOrCreateDatabase() ফাংশনটি প্যারামিটার হিসেবে ডাটাবেস নেম, মোড এবং নাল নেয় । প্রদত্ত ডাটাবেস নামে ডাটাবেস না থাকলে এই ফাংশন নতুন করে ঐ নামে ডাটাবেস ক্রিয়েট করে । 
+Database Create করার জন্য android.database.sqlite প্যাকেজ openOrCreateDatabase() ফাংশন বাদেও আরও কিছু ফাংশন প্রভাইড করে থাকে , যেমন openDatabase()।
+Database Insertion:
+ডাটাবেসে টেবিল ক্রিয়েট / টেবিলে ডাটা ইনসার্ট করার জন্য SQLiteDatabase ক্লাসে execSQL() মেথড ডিফাইন করা আছে । 
+টেবিল ক্রিয়েট করার সিনট্যাক্সঃ 
+myDatabase.execSQL("CREATE TABLE NOT EXISTS tableName(username VARCHAR, password VARCHAR)");
+টেবিলে ডাটা ইনসার্ট করার সিনট্যাক্সঃ 
+myDatabase.execSQL("INSERT INTO tableName VALUES('admin','admin')");
+Database Fetching:
+ডাটাবেস থেকে ডাটা রিট্রাইভ করার জন্য Cursor ক্লাসের অবজেক্ট ক্রিয়েট করবো  এবং এই ক্লাসের rawQuery() মেথড কল করবো । 
+সিনট্যাক্সঃ 
+Cursor c = myDatabase.rawQuery("SELECT * FROM tableName", null);
+Cursor ক্লাসের অবজেক্টটি টেবিল কে পয়েন্ট করে । এখন আমরা কার্সর সামনের দিকে মুভ করবো এবং ডাটা রিট্রাইভ করতে থাকবো । কার্সর সামনে মুভ করানোর জন্য moveToFirst(), moveToNext() ফংশন ব্যাবহার করা হয় । 
+সিনট্যাক্সঃ
+c.moveToFirst();
+String userName = c.getString(0);
+String password = c.getString(1);
+টেবিলে একাধিক রো থাকলে লুপ চালাতে হবে । 
+সিনট্যাক্সঃ
+int userNameIndex = c.getColumnIndex("username");
+int passwordIndex = c.getColumnIndex("password");
+while(c != null)
+{
+  userName = c.getString(userNameIndex);
+  password = c.getString(passwordIndex);
+// process username and password
+  c.moveToNext();
+
+}
+
+
+WebView: অ্যান্ড্রয়েড আপ্লিকেশনে ওয়েব পেজ( অনলাইন কনটেন্ট ) দেখানোর জন্য WebView ব্যবহৃত হয় ।    WebView ক্লাসের loadUrl() এবং loadData() মেথড দুটি অ্যান্ড্রয়েড আপ্লিকেশনে ওয়েব পেজ লোড করা এবং দেখানোর জন্য ব্যবহৃত হয় ।
+সিনট্যাক্সঃ 
+        WebView webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadData("<html><body><h3>Md Rashedul Islam Rony</h3><p>Studying CSE at PUST</p></body></html>","text/html","UTF-8");
+অথবাঃ
+        WebView webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("http://www.google.com");
+
+ParseObject এর মাধ্যমে ক্লাঊডে ডাটা জমা এবং ক্লাঊড থেকে ডাটা রিট্রাইভ করা যায় । ParseObject কে স্কিমলেস(অর্থাৎ কি ভ্যালু পেয়ার হিসেবে জমা ডাটা ভিন্ন ভিন্ন হতে পারে ) বলা হয়।
+সিনট্যাক্সঃ 
+
+অবজেক্ট কিয়েটঃ 
+
+ParseObject parseObject = new ParseObject("Employee");
+
+অবজেক্ট সেভ করাঃ 
+
+parseObject.put("name", "rony");
+
+parseObject.put("id", "123");
+
+parseObject.put("isMuslim", "true");
+
+parseObject.saveInBackground(); // ভ্যালু  সেভ করে রাখার জন্য ব্যাবহার করা হয় ।   
+
+অবজেক্ট রিট্রাইভ করাঃ 
+
+অবজেক্ট সেভ করার পর ডাটা রিট্রাইভ করার জন্য অবজেক্ট আইডি দরকার হয় যেটা parseObject কে সাক্সেস্ফুলি সার্ভারে আপলোড করার পর পাওয়া যায় । এছাড়াও ParseQuery এর প্রয়োজন পড়ে । 
+
+ParseQuery<ParseObject> query = ParseQuery.getQuery("Employee");
+
+query.getInBackground("id", new GetCallback<ParseObject>() {
+
+    public void done(ParseObject object, ParseException e) {
+ 
+        if(e == null) {
+           // object will be your Employee
+
+           String name = parseObject.getString("name");
+   
+           int id = parseObject.getInt("id");
+        
+           boolean  isMuslim = parseObject.getBoolean("isMuslim");
+
+        } else {
+            
+          // Exception found 
+          
+        }
+         
+    }
+  
+});
+
+আগে থেকেই ক্লাউড এর মধ্যে জমা ডাটা রিফ্রেশ দেয়ার জন্য fetchInBackground() ফাংশন কল করা হয় । 
+
+সিনট্যাক্সঃ
+
+myObject.fetchInBackground(new GetCallback<ParseObject>() {
+
+   public void done(ParseObject object, ParseException e) {
+ 
+      if(e == null) {
+
+         // success 
+ 
+      } else {
+
+          // Failure
+          
+      }
+ 
+   }
+
+}):
+
+আপডেটঃ 
+
+অবজেক্ট আপডেট করা খুবই সহজ , শুধু নতুন ভ্যালু  সেট করা এজন্য অবজেক্ট এর আইডি ব্যাবহার করে ParseQuery এর মাধ্যমে ParseObject রিট্রাইভ করা  এবং ডাটা আপডেট করা । 
+
+সিনট্যাক্সঃ
+
+ParseQuery<ParseObject> query = ParseQuery.getQuery("Employee");
+
+// Retrieving the object by id
+
+query.getInBackground("id", new GetCallback<ParseObject>(){
+
+   public void done(ParseObject object, ParseException e) {
+ 
+      if(e == null) {
+ 
+         // object update
+         object.put("name", "rashedul");
+
+         object.put("id", "1256");
+
+         object.put("isMuslim", false);
+
+         object.saveInBackground(); // অবজেক্ট এর ভ্যালু  সেভ করা 
+
+      }    
+ 
+   }
+
+});
+
+ডিলিট অবজেক্টঃ 
+
+অবজেক্ট ডিলিট করার জন্য শুধু deleteInBackground() মেথড কল করলেই হবে । 
+
+সিনট্যাক্সঃ 
+
+object.deleteInBackground();
+
+সম্পূর্ণ অবজেক্ট ডিলিট না করে যদি অবজেক্টের এক/একাধিক ফিল্ড ডিলিট করতে চাই তাহলে remove() ফাংশন কল করতে হবে । 
+
+সিনট্যাক্সঃ
+
+object.remove("fieldName");
+
+object.saveInBackground();
+
+বিঃদ্রঃ অবজেক্ট ডিলিট করার পর অবশ্যই সেভ করতে হবে । 
